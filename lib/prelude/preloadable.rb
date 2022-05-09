@@ -44,7 +44,7 @@ module Prelude
               all_siblings = self._load_tree.siblings
               @prelude_preloader = Prelude::Preloader.new(all_siblings)
               all_siblings.each do |sibling|
-                silbing.prelude_preloader = @prelude_preloader
+                sibling.prelude_preloader = @prelude_preloader
               end
             else
               @prelude_preloader = Preloader.new([self])
