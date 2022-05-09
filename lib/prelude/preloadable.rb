@@ -37,7 +37,8 @@ module Prelude
           return preloaded_values[key] if preloaded_values.key?(key)
 
           unless @prelude_preloader
-             if ActiveRecord.dynamic_includes_enabled? && self.class.respond_to?(:_load_tree)
+
+            if ActiveRecord.dynamic_includes_enabled? && self.respond_to?(:_load_tree) && self._load_tree.siblings.any?
               ActiveRecord::Base.logger.debug { "Dynamically preloaded batch method: #{name}" }
 
               all_siblings = self._load_tree.siblings
