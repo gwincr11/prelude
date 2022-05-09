@@ -11,7 +11,7 @@ module Prelude
         # Load and set the results for each record
         results = preload(method, args)
         records.each do |record|
-          record._create_load_tree(siblings: records, parent: record, association_name: name)
+          record._create_load_tree(siblings: records, parent: record, association_name: name) if record.respond_to?(:_create_load_tree)
           record.set_preloaded_value_for(name, args, results[record])
         end
 
